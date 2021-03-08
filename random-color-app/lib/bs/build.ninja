@@ -1,0 +1,28 @@
+rescript = 1
+g_finger := D:\Learning\Frontend\ReasonML\random-color-app\node_modules\reason-react\lib\ocaml\install.stamp
+g_finger := D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-randomcolor\lib\ocaml\install.stamp
+rule astj
+  command = "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-platform\win32\bsc.exe"  -bs-v 9.0.1 -bs-jsx 3 -bs-super-errors -bs-no-version-header -absname -bs-ast -o $out $i
+o src\Index.ast : astj ..\..\src\Index.re
+rule deps
+  command = "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-platform\win32\bsb_helper.exe" -hash 78711aafd5989866bf1cb268d5bdf61c -bs-ns RandomColorApp $in
+  restat = 1
+o src\Index.d : deps src\Index.ast
+rule mij
+  command = "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-platform\win32\bsc.exe" -bs-ns RandomColorApp -I . -I src -I "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\reason-react\lib\ocaml" -I "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-randomcolor\lib\ocaml" -bs-super-errors -bs-no-version-header  -bs-package-name random-color-app -bs-package-output commonjs:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src\Index-RandomColorApp.cmj src\Index-RandomColorApp.cmi ..\..\src\Index.bs.js : mij src\Index.ast
+o src\MyName.ast : astj ..\..\src\MyName.re
+o src\MyName.d : deps src\MyName.ast
+o src\MyName-RandomColorApp.cmj src\MyName-RandomColorApp.cmi ..\..\src\MyName.bs.js : mij src\MyName.ast
+o src\MyStyle.ast : astj ..\..\src\MyStyle.re
+o src\MyStyle.d : deps src\MyStyle.ast
+o src\MyStyle-RandomColorApp.cmj src\MyStyle-RandomColorApp.cmi ..\..\src\MyStyle.bs.js : mij src\MyStyle.ast
+o src\ChangeColor.ast : astj ..\..\src\ChangeColor.re
+o src\ChangeColor.d : deps src\ChangeColor.ast
+o src\ChangeColor-RandomColorApp.cmj src\ChangeColor-RandomColorApp.cmi ..\..\src\ChangeColor.bs.js : mij src\ChangeColor.ast
+rule build_package
+  command = "D:\Learning\Frontend\ReasonML\random-color-app\node_modules\bs-platform\win32\bsc.exe" -w -49 -color always -no-alias-deps  $i
+  restat = 1
+o RandomColorApp.cmi : build_package RandomColorApp.mlmap

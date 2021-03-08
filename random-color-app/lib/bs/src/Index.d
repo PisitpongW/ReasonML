@@ -1,0 +1,1 @@
+src\Index-RandomColorApp.cmj : RandomColorApp.cmi src\ChangeColor-RandomColorApp.cmj src\ChangeColor-RandomColorApp.cmi src\MyName-RandomColorApp.cmj src\MyName-RandomColorApp.cmi src\MyStyle-RandomColorApp.cmj src\MyStyle-RandomColorApp.cmi

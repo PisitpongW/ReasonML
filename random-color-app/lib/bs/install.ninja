@@ -1,0 +1,25 @@
+rescript = 1
+rule cp
+  command = cmd.exe /C copy /Y $i $out >NUL
+rule touch
+ command = cmd.exe /C type nul >>$out & copy $out+,, >NUL
+o Index-RandomColorApp.cmi : cp ..\bs\src\Index-RandomColorApp.cmi
+o Index-RandomColorApp.cmj : cp ..\bs\src\Index-RandomColorApp.cmj
+o Index-RandomColorApp.cmt : cp ..\bs\src\Index-RandomColorApp.cmt
+o Index.re : cp ..\..\src\Index.re
+o MyName-RandomColorApp.cmi : cp ..\bs\src\MyName-RandomColorApp.cmi
+o MyName-RandomColorApp.cmj : cp ..\bs\src\MyName-RandomColorApp.cmj
+o MyName-RandomColorApp.cmt : cp ..\bs\src\MyName-RandomColorApp.cmt
+o MyName.re : cp ..\..\src\MyName.re
+o MyStyle-RandomColorApp.cmi : cp ..\bs\src\MyStyle-RandomColorApp.cmi
+o MyStyle-RandomColorApp.cmj : cp ..\bs\src\MyStyle-RandomColorApp.cmj
+o MyStyle-RandomColorApp.cmt : cp ..\bs\src\MyStyle-RandomColorApp.cmt
+o MyStyle.re : cp ..\..\src\MyStyle.re
+o ChangeColor-RandomColorApp.cmi : cp ..\bs\src\ChangeColor-RandomColorApp.cmi
+o ChangeColor-RandomColorApp.cmj : cp ..\bs\src\ChangeColor-RandomColorApp.cmj
+o ChangeColor-RandomColorApp.cmt : cp ..\bs\src\ChangeColor-RandomColorApp.cmt
+o ChangeColor.re : cp ..\..\src\ChangeColor.re
+o RandomColorApp.cmi : cp ..\bs\RandomColorApp.cmi
+o RandomColorApp.cmj : cp ..\bs\RandomColorApp.cmj
+o RandomColorApp.cmt : cp ..\bs\RandomColorApp.cmt
+build install.stamp : touch Index-RandomColorApp.cmi Index-RandomColorApp.cmj MyName-RandomColorApp.cmi MyName-RandomColorApp.cmj MyStyle-RandomColorApp.cmi MyStyle-RandomColorApp.cmj ChangeColor-RandomColorApp.cmi ChangeColor-RandomColorApp.cmj RandomColorApp.cmi RandomColorApp.cmj
